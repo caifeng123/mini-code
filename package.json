@@ -4,7 +4,16 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "postinstall": "simple-git-hooks"
+  },
+  "simple-git-hooks": {
+    "pre-commit": "pnpm lint-staged"
+  },
+  "lint-staged": {
+    "*.{js,ts?(x)}": [
+      "eslint --fix"
+    ]
   },
   "keywords": [],
   "author": "caifeng01",
@@ -15,6 +24,8 @@
     "eslint": "^8.43.0",
     "eslint-config-airbnb-typescript": "^17.0.0",
     "eslint-plugin-import": "^2.27.5",
+    "lint-staged": "^13.2.3",
+    "simple-git-hooks": "^2.8.1",
     "typescript": "^5.1.5"
   }
 }

@@ -19,3 +19,14 @@
     - `@typescript-eslint/parser @typescript-eslint/eslint-plugin` 解析ts语法库
     - `eslint-config-airbnb-typescript` airbnb配置
     - `eslint-plugin-import` 检查 ES6 的 import/export 语法，并防止在项目中发生文件路径和导入名字的错误的 ESLint 插件
+- 使用`simple-git-hooks + lint-staged` 进行 `pre-commit` 处理
+  - 在 『postinstall』时执行 `pre-commit` 钩子注入
+  - `lint-staged` 设定处理对暂存区的什么类型文件按 `eslint --fix` 进行修复
+  - 为什么不用 `husky` 而用 `simple-git-hooks` ?
+    - 功能类似都是写入git hook
+    - 对于 `husky` 需要生成 `.husky` 文件，内部存储各种钩子脚本，但这个文件不会被提交
+      - 对于husky5后的版本需要手动调用脚本添加hook
+      - 例如：`npx husky add .husky/pre-commit "npm test"`
+    - 对于 `simple-git-hooks` 可以将钩子配置在 `package.json` 中
+      - 由于接手项目的人的技术高低不定，因此将所有配置设定在package.json中自动化处理最优。
+      - 在项目install安装依赖后自动注入钩子，提升开发体验
