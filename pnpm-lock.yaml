@@ -3,6 +3,7 @@ lockfileVersion: 5.4
 importers:
   .:
     specifiers:
+      '@types/node': ^20.3.2
       '@typescript-eslint/eslint-plugin': ^5.60.1
       '@typescript-eslint/parser': ^5.60.1
       eslint: ^8.43.0
@@ -13,6 +14,7 @@ importers:
       simple-git-hooks: ^2.8.1
       typescript: ^5.1.5
     devDependencies:
+      '@types/node': 20.3.2
       '@typescript-eslint/eslint-plugin': 5.60.1_fr2pj536ddbnxu5svmsyctvjlm
       '@typescript-eslint/parser': 5.60.1_24ltqdv65bkrtapjgtr2nfk6zm
       eslint: 8.43.0
@@ -22,6 +24,9 @@ importers:
       prettier: 2.8.8
       simple-git-hooks: 2.8.1
       typescript: 5.1.5
+
+  packages/mini-koa:
+    specifiers: {}
 
 packages:
   /@aashutoshrathi/word-wrap/1.2.6:
@@ -151,6 +156,13 @@ packages:
     resolution:
       {
         integrity: sha512-dRLjCWHYg4oaA77cxO64oO+7JwCwnIzkZPdrrC71jQmQtlhM556pwKo5bUzqvZndkVbeFLIIi+9TC40JNF5hNQ==
+      }
+    dev: true
+
+  /@types/node/20.3.2:
+    resolution:
+      {
+        integrity: sha512-vOBLVQeCQfIcF/2Y7eKFTqrMnizK5lRNQ7ykML/5RuwVXVWxYkgwS7xbt4B6fKCUPgbSL5FSsjHQpaGQP/dQmw==
       }
     dev: true
 

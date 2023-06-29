@@ -1,6 +1,8 @@
 {
-    "extends": "../../tsconfig.json",
-    "compilerOptions": {
-        "outDir": "./ouput"
-    }
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "outDir": "./output",
+    "esModuleInterop": true,
+    "module": "CommonJS"
+  }
 }
