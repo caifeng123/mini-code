@@ -1,4 +1,3 @@
-# 理论应该开启, 但为了演示设定保存自动格式化
-# *.code-workspace
+*.code-workspace
 node_modules
 output
