@@ -11,6 +11,8 @@ class Context {
     req: http.IncomingMessage;
   };
 
+  body: any;
+
   constructor(
     req: http.IncomingMessage,
     res: http.ServerResponse<http.IncomingMessage> & {
@@ -20,10 +22,6 @@ class Context {
     this.request = req;
     this.response = res;
     return this;
-  }
-
-  set body(value: any) {
-    this.response.end(value);
   }
 }
 
@@ -40,9 +38,16 @@ class Koa {
 
   listen = (port?: number, hostname?: string) => {
     const middleFunc = this.#compose(this.middlewares);
-    const server = http.createServer((req, res) => {
+    const server = http.createServer(async (req, res) => {
       const ctx = new Context(req, res);
-      middleFunc(ctx);
+      try {
+        await middleFunc(ctx);
+        ctx.response.end(ctx.body);
+      } catch (error) {
+        console.error(error);
+        ctx.response.statusCode = 500;
+        ctx.response.end('Internel Server Error');
+      }
     });
     server.listen(port, hostname);
   };
@@ -62,4 +67,4 @@ class Koa {
   };
 }
 
-export default Koa;
+module.exports = Koa;
