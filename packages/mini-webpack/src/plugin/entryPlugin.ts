@@ -1,7 +1,7 @@
-import { resolve } from 'path';
-import { Compilation } from './compilation';
-import { Compiler } from './compiler';
-import { EntryPluginProps } from './types';
+import { dirname, resolve } from 'path';
+import { Compilation } from '../compilation';
+import { Compiler } from '../compiler';
+import { EntryPluginProps } from '../types';
 
 export class EntryPlugin {
   entry: string;
@@ -23,8 +23,9 @@ export class EntryPlugin {
 
         for (let i = 0; i < moduleArr.length; i++) {
           const { dependencies, filename } = moduleArr[i];
+          const dir = dirname(filename);
           dependencies.forEach((dependency: string) => {
-            const dependencyPath = resolve(filename, dependency);
+            const dependencyPath = resolve(dir, dependency);
             if (visitedAsset[dependencyPath]) {
               moduleArr[i].mapping[dependency] = visitedAsset[dependencyPath];
             } else {

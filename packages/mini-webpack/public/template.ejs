@@ -1,0 +1,21 @@
+;(function(map){  
+  const require = (fileID) => {
+    const [fn, mapping] = map[fileID];
+    const module = {
+      exports: {}
+    }
+    const localRequire = (filename) => {
+      return require(mapping[filename]);
+    }
+    
+    fn(localRequire, module, module.exports);
+    return module.exports;
+  }
+  require(0);
+})({
+  <% data.forEach((info) => { %>
+    <%- info.id %>: [function(require, module, exports) {
+      <%- info.code  %>
+    }, <%- JSON.stringify(info.mapping)  %>],
+  <% }); %>
+});

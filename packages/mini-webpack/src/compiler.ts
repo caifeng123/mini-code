@@ -6,12 +6,16 @@ import {
   UnsetAdditionalOptions
 } from 'tapable';
 import { Config, Loader } from './types';
-import { EntryPlugin } from './entryPlugin';
+import { EntryPlugin } from './plugin/entryPlugin';
+import { OutputPlugin } from './plugin/outputPlugin';
 
 export class Compiler {
   entry: string;
 
-  output: Record<string, any>;
+  output: {
+    path: string;
+    filename: string;
+  };
 
   plugins: any[];
 
@@ -48,6 +52,7 @@ export class Compiler {
     });
 
     new EntryPlugin({ entry: this.entry }).apply(this);
+    new OutputPlugin({ output: this.output }).apply(this);
   }
 
   run() {

@@ -5,7 +5,10 @@ export type Loader = {
 
 export type Config = {
   entry: string;
-  output: Record<string, any>;
+  output: {
+    path: string;
+    filename: string;
+  };
   module: {
     rules: Loader[];
   };
@@ -14,3 +17,4 @@ export type Config = {
 
 export type CompilationProps = Pick<Config, 'module' | 'output'>;
 export type EntryPluginProps = Pick<Config, 'entry'>;
+export type OutputPluginProps = Pick<Config, 'output'>;
