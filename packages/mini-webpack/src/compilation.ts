@@ -7,7 +7,10 @@ let ID = 0;
 export class Compilation {
   loaders: Loader[];
 
-  output: Record<string, any>;
+  output: {
+    path: string;
+    filename: string;
+  };
 
   graph: any[];
 

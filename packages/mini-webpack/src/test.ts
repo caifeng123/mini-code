@@ -1,6 +1,6 @@
 import { webpack } from '.';
 import { JsonLoader } from './loaders/JsonLoader';
-// const jsonLoader = require('./loaders/json-loader.cjs');
+import { HtmlWebpackPlugin } from './plugins/htmlWebpackPlugin';
 
 const path = require('path');
 
@@ -19,9 +19,9 @@ const config = {
     ]
   },
   plugins: [
-    // new HtmlWebpackPlugin({
-    //   filename: 'template.html'
-    // })
+    new HtmlWebpackPlugin({
+      filename: 'template.html'
+    })
   ]
 };
 

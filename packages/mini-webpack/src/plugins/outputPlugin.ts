@@ -16,7 +16,7 @@ export class OutputPlugin {
   }
 
   apply(compiler: Compiler) {
-    compiler.hooks.afterEmit.tapAsync(
+    compiler.hooks.emit.tapAsync(
       'OutputPlugin',
       (compilation: Compilation, callback) => {
         const { path, filename } = this.output;
