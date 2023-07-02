@@ -6,8 +6,8 @@ import {
   UnsetAdditionalOptions
 } from 'tapable';
 import { Config, Loader } from './types';
-import { EntryPlugin } from './plugin/entryPlugin';
-import { OutputPlugin } from './plugin/outputPlugin';
+import { EntryPlugin } from './plugins/entryPlugin';
+import { OutputPlugin } from './plugins/outputPlugin';
 
 export class Compiler {
   entry: string;

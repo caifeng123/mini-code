@@ -1,5 +1,5 @@
 import { webpack } from '.';
-// const HtmlWebpackPlugin = require('./plugins/html-webpack-plugin.cjs');
+import { JsonLoader } from './loaders/JsonLoader';
 // const jsonLoader = require('./loaders/json-loader.cjs');
 
 const path = require('path');
@@ -12,10 +12,10 @@ const config = {
   },
   module: {
     rules: [
-      // {
-      //   test: /\.json$/,
-      //   use: jsonLoader
-      // }
+      {
+        test: /\.json$/,
+        use: JsonLoader
+      }
     ]
   },
   plugins: [
