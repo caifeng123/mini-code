@@ -1,9 +1,15 @@
-;(function(map){  
+;(function(map){
+  const __webpack_module_cache__ = {};
   const require = (fileID) => {
-    const [fn, mapping] = map[fileID];
-    const module = {
-      exports: {}
+    if(__webpack_module_cache__[fileID]) {
+      return __webpack_module_cache__[fileID].exports;
     }
+    const [fn, mapping] = map[fileID];
+    
+    const module = (__webpack_module_cache__[fileID] = {
+      exports: {}
+    });
+
     const localRequire = (filename) => {
       return require(mapping[filename]);
     }
